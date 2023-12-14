@@ -55,7 +55,7 @@ header('location:../index.php');
             if(isset($_POST['fullname'])){
             $fullname = $_POST["fullname"];    
             $username = $_POST["username"];
-            $password = $_POST["password"];
+           
             $dor = $_POST["dor"];
             $gender = $_POST["gender"];
             $services = $_POST["services"];
@@ -70,7 +70,7 @@ header('location:../index.php');
             include 'dbcon.php';
             //code after connection is successfull
             //update query
-            $qry = "update members set fullname='$fullname', username='$username', password='$password',dor='$dor', gender='$gender', services='$services', amount='$totalamount', plan='$plan', address='$address', contact='$contact' where user_id='$id'";
+            $qry = "update members set fullname='$fullname', username='$username', dor='$dor', gender='$gender', services='$services', amount='$totalamount', plan='$plan', address='$address', contact='$contact' where user_id='$id'";
             $result = mysqli_query($conn,$qry); //query executes
 
             if(!$result){
