@@ -74,7 +74,7 @@ header('location:../index.php');
             <div class="control-group">
               <label class="control-label">Password :</label>
               <div class="controls">
-                <input type="password"  class="span11" name="password" placeholder="**********"  />
+                <input type="password"  class="span11" name="password" placeholder="**********" required />
                 <span class="help-block">Note: The given information will create an account for this particular member</span>
               </div>
             </div>

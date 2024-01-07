@@ -84,7 +84,7 @@ while($row=mysqli_fetch_array($result)){
             <div class="control-group">
               <label class="control-label">Password :</label>
               <div class="controls">
-                <input type="password"  class="span11" name="password" disabled="" placeholder="**********"  />
+                <input type="password"  class="span" name="password"  disabled="" placeholder="**********"  />
                 <span class="help-block">Note: Only the members are allowed to change their password until and unless it's an emergency.</span>
               </div>
             </div>

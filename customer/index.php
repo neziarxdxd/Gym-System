@@ -78,7 +78,7 @@ include('dbcon.php'); ?>
 
                     <div class="controls">
                         <div class="main_input_box">
-                            <span class="add-on bg_lo"><i class="icon-pencil"></i></span><input type="text" name="fullname" placeholder="Fullname" />
+                            <span class="add-on bg_lo"><i class="icon-pencil"></i></span><input type="text" name="fullname" placeholder="Fullname" required />
                         </div>
                     </div>
 
@@ -86,7 +86,7 @@ include('dbcon.php'); ?>
 
                         <div class="controls">
                             <div class="main_input_box">
-                                <span class="add-on bg_lo"><i class="icon-leaf"></i></span><input type="text" name="username" placeholder="@username" />
+                                <span class="add-on bg_lo"><i class="icon-leaf"></i></span><input type="text" pattern="^.{4,15}$" name="username" placeholder="@username" required />
                             </div>
                         </div>
 
@@ -94,7 +94,7 @@ include('dbcon.php'); ?>
 
                     <div class="controls">
                         <div class="main_input_box">
-                            <span class="add-on bg_lo"><i class="icon-asterisk"></i></span><input type="password" name="password" placeholder="Password" />
+                            <span class="add-on bg_lo"><i class="icon-asterisk"></i></span><input type="password" name="password" placeholder="Password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{4,}$" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" require/>
                         </div>
                     </div>
 
@@ -130,7 +130,7 @@ include('dbcon.php'); ?>
 
                         <div class="controls">
                             <div class="main_input_box">
-                            <select name="plan" required="required" id="select">
+                            <select name="plan" required="required" id="select" required>
                             <option selected="true" disabled="disabled">Select Plans</option>
                                 <option value="1" >One Month</option>
                                 <option value="3">Three Month</option>
@@ -157,7 +157,7 @@ include('dbcon.php'); ?>
                
                 <div class="form-actions">
                     <span class="pull-left"><a href="#" class="flip-link btn btn-success" id="to-login">&laquo; Back to login</a></span>
-                    <span class="pull-right"><button class="btn btn-info" type="SUBMIT">Submit Details</button></span>
+                    <span class="pull-right"><input type="submit" class="btn btn-info" type="SUBMIT" text="Submit Details"></span>
                 </div>
 
                 

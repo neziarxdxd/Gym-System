@@ -84,7 +84,7 @@ while($row=mysqli_fetch_array($result)){
             <div class="control-group">
               <label class="control-label">Password :</label>
               <div class="controls">
-                <input type="password"  class="span11" name="password" disabled="" placeholder="**********" value='<?php echo $row['password']; ?>' />
+                <input type="password"  class="span11" placeholder="Password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{4,}$" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" require name="password" disabled=""  placeholder="**********" value='<?php echo $row['password']; ?>' />
                 <span class="help-block">Note: Only the admins are allowed to change their password until and unless it's an emergency.</span>
               </div>
             </div>
