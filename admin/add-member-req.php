@@ -67,7 +67,11 @@ if(isset($_POST['fullname'])){
   $address = $_POST["address"];
   $contact = $_POST["contact"];
 
-
+  $services_dict = array(
+    "Fitness" => 550,
+    "Sauna" => 350,
+    "Cardio" => 400
+  );
   $totalamount = $amount * $plan;
   // <!-- Visit codeastro.com for more projects -->
 include 'dbcon.php';

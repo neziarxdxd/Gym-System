@@ -72,19 +72,19 @@ while($row=mysqli_fetch_array($result)){
             <div class="control-group">
               <label class="control-label">Full Name :</label>
               <div class="controls">
-                <input type="text" class="span11" name="fullname" value='<?php echo $row['fullname']; ?>' />
+                <input type="text" class="span11" name="fullname" value='<?php echo $row['fullname']; ?>' required/>
               </div>
             </div>
             <div class="control-group">
               <label class="control-label">Username :</label>
               <div class="controls">
-                <input type="text" class="span11" name="username" value='<?php echo $row['username']; ?>' />
+                <input type="text" class="span11" name="username" value='<?php echo $row['username']; ?>' required/>
               </div>
             </div>
             <div class="control-group">
               <label class="control-label">Password :</label>
               <div class="controls">
-                <input type="password"  class="span11" placeholder="Password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{4,}$" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" require name="password" disabled=""  placeholder="**********" value='<?php echo $row['password']; ?>' />
+                <input type="password"  class="span11" placeholder="Password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{4,}$" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required name="password" placeholder="**********" value='<?php echo $row['password']; ?>' />
                 <span class="help-block">Note: Only the admins are allowed to change their password until and unless it's an emergency.</span>
               </div>
             </div>
@@ -101,7 +101,7 @@ while($row=mysqli_fetch_array($result)){
             <div class="control-group">
               <label class="control-label">D.O.R :</label>
               <div class="controls">
-                <input type="date" name="dor" class="span11" value='<?php echo $row['dor']; ?>' />
+                <input type="date" required name="dor" class="span11" value='<?php echo $row['dor']; ?>' />
                 <span class="help-block">Date of registration</span> </div>
             </div>
             
@@ -156,14 +156,14 @@ while($row=mysqli_fetch_array($result)){
             <div class="control-group">
               <label for="normal" class="control-label">Contact Number</label>
               <div class="controls">
-                <input type="number" id="mask-phone" name="contact" value='<?php echo $row['contact']; ?>' class="span8 mask text">
+                <input type="number" id="mask-phone" name="contact" required value='<?php echo $row['contact']; ?>' class="span8 mask text">
                 <span class="help-block blue span8">(999) 999-9999</span> 
                 </div>
             </div>
             <div class="control-group">
               <label class="control-label">Address :</label>
               <div class="controls">
-                <input type="text" class="span11" name="address" value='<?php echo $row['address']; ?>' />
+                <input type="text" class="span11" name="address" value='<?php echo $row['address']; ?>' required/>
               </div>
             </div>
           </div>
@@ -179,7 +179,7 @@ while($row=mysqli_fetch_array($result)){
               <label class="control-label">Services</label>
               <div class="controls">
                 <label>
-                  <input type="radio" value="Fitness" name="services" />
+                  <input type="radio" value="Fitness" name="services" required />
                   Fitness <small>- ₱550 per month</small></label>
                 <label>
                   <input type="radio" value="Sauna" name="services" />
@@ -195,7 +195,7 @@ while($row=mysqli_fetch_array($result)){
               <div class="controls">
                 <div class="input-append">
                   <span class="add-on">₱</span> 
-                  <input type="number" value='<?php echo $row['amount']; ?>' name="amount" class="span11">
+                  <input type="number" value='<?php echo $row['amount']; ?>' name="amount" required class="span11">
                   </div>
               </div>
             </div>

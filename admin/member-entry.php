@@ -62,19 +62,19 @@ header('location:../index.php');
             <div class="control-group">
               <label class="control-label">Full Name :</label>
               <div class="controls">
-                <input type="text" class="span11" name="fullname" placeholder="Fullname" />
+                <input type="text" class="span11" name="fullname" placeholder="Fullname" required/>
               </div>
             </div>
             <div class="control-group">
               <label class="control-label">Username :</label>
               <div class="controls">
-                <input type="text" class="span11" name="username" placeholder="Username" />
+                <input type="text" class="span11" name="username" placeholder="Username" required/>
               </div>
             </div>
             <div class="control-group">
               <label class="control-label">Password :</label>
               <div class="controls">
-                <input type="password"  class="span11" name="password" placeholder="**********" required />
+                <input type="password"  class="span11" name="password"  pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{4,}$" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="**********" required  />
                 <span class="help-block">Note: The given information will create an account for this particular member</span>
               </div>
             </div>
@@ -91,7 +91,7 @@ header('location:../index.php');
             <div class="control-group">
               <label class="control-label">D.O.R :</label>
               <div class="controls">
-                <input type="date" name="dor" class="span11" />
+                <input type="date" name="dor" class="span11" required/>
                 <span class="help-block">Date of registration</span> </div>
             </div>
             
@@ -146,14 +146,14 @@ header('location:../index.php');
             <div class="control-group">
               <label for="normal" class="control-label">Contact Number</label>
               <div class="controls">
-                <input type="number" id="mask-phone" name="contact" placeholder="9876543210" class="span8 mask text">
+                <input type="number" id="mask-phone" name="contact" placeholder="9876543210" class="span8 mask text" required>
                 <span class="help-block blue span8">(999) 999-9999</span> 
                 </div>
             </div>
             <div class="control-group">
               <label class="control-label">Address :</label>
               <div class="controls">
-                <input type="text" class="span11" name="address" placeholder="Address" />
+                <input type="text" class="span11" name="address" placeholder="Address" required/>
               </div>
             </div>
           </div>
@@ -169,7 +169,7 @@ header('location:../index.php');
               <label class="control-label">Services</label>
               <div class="controls">
                 <label>
-                  <input type="radio" value="Fitness" name="services" />
+                  <input type="radio" value="Fitness" name="services" required/>
                   Fitness <small>- ₱550 per month</small></label>
                 <label>
                   <input type="radio" value="Sauna" name="services" />
@@ -185,7 +185,7 @@ header('location:../index.php');
               <div class="controls">
                 <div class="input-append">
                   <span class="add-on">₱</span> 
-                  <input type="number" placeholder="50" name="amount" class="span11">
+                  <input type="number" placeholder="50" name="amount" class="span11" required>
                   </div>
               </div>
             </div>

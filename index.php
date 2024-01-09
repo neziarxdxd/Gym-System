@@ -14,13 +14,14 @@
         <link href="font-awesome/css/all.css" rel="stylesheet" />
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 
-    </head>
+</head>
     
     <body>
     
         <div id="loginbox">            
             <form id="loginform" method="POST" class="form-vertical" action="#">
-            <div class="control-group normal_text"> <h3><img src="../Gym-System/img/logogo.png" alt="Logo" /></h3></div>
+            <div class="control-group normal_text"> <img src="../Gym-System/img/logogo.png" alt="Logo"  style="width : 200px; height : 200px" /></div>
+            
                 <div class="control-group">
                     <div class="controls">
                         <div class="main_input_box">
