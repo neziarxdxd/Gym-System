@@ -1,8 +1,11 @@
 <?php
- include 'session.php';
-
+session_start();
+//the isset function to check username is already loged in and stored on the session
+if(!isset($_SESSION['user_id'])){
+header('location:../index.php');	
+}
 ?>
-
+<!-- Visit codeastro.com for more projects -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,7 +34,7 @@
 <?php include '../includes/topheader.php'?>
 <!--close-top-Header-menu-->
 <!--sidebar-menu-->
-<?php $page="todo"; include '../includes/sidebar.php'?>
+<?php $page="payment"; include '../includes/sidebar.php'?>
 <!--sidebar-menu-->
 
 <!--main-container-part-->
@@ -48,70 +51,40 @@
 <!--End-Action boxes-->    
 
     <div class="row-fluid">
-	<form role="form" action="index.php" method="POST">  
-    <?php 
+	  
+    <div class="span12">
+    <div class="widget-box">
+          <div class="widget-title bg_ly" data-toggle="collapse" href="#collapseG2"><span class="icon"><i class="icon-chevron-down"></i></span>
+            <h5>Payment History</h5>
+          </div>
+          <div class="widget-content nopadding collapse in" id="collapseG2">
+            <ul class="recent-posts">
+              <li>
 
-       
+              <?php
 
-        if(isset($_POST['task_desc'])){   
-        $task_status = $_POST["task_status"];
-        $task_desc = $_POST["task_desc"];
-        $user_id = $session_id;
-        include 'dbcon.php';
-        
-        //code after connection is successfull
-        $qry = "insert into todo(task_status,task_desc,user_id) values ('$task_status','$task_desc','$user_id')";
-        $result = mysqli_query($con,$qry); //query executes
+                include "dbcon.php";
+                $qry="select * from members where user_id='$_SESSION[user_id]'";
+                  $result=mysqli_query($con,$qry);
+                  
+                while($row=mysqli_fetch_array($result)){
+                // center icon
+                 
+                  echo"<div class='article-post'>"; 
+                  echo"<div class='user-info'> <b>Date:</b> ".$row['paid_date']." </div>";
+                  echo "<div class='user-info'> <b>Services:</b> ".$row['services']." </div>";
+                  echo"<div class='user-info'> <b>Amount:</b>  Php. ".$row['amount']." </div>";           
+                }
 
-            if(!$result){
-            echo"<div class='container-fluid'>";
-                echo"<div class='row-fluid'>";
-                echo"<div class='span12'>";
-                echo"<div class='widget-box'>";
-                echo"<div class='widget-title'> <span class='icon'> <i class='icon-info-sign'></i> </span>";
-                    echo"<h5>Error Message</h5>";
-                    echo"</div>";
-                    echo"<div class='widget-content'>";
-                        echo"<div class='error_ex'>";
-                        echo"<h1 style='color:maroon;'>Error 404</h1>";
-                        echo"<h3>Error occured while entering your details</h3>";
-                        echo"<p>Please Try Again</p>";
-                        echo"<a class='btn btn-warning btn-big'  href='index.php'>Go Back</a> </div>";
-                    echo"</div>";
-                    echo"</div>";
                 echo"</div>";
-                echo"</div>";
-            echo"</div>";
-            }else {
-
-            echo"<div class='container-fluid'>";
-                echo"<div class='row-fluid'>";
-                echo"<div class='span12'>";
-                echo"<div class='widget-box'>";
-                echo"<div class='widget-title'> <span class='icon'> <i class='icon-info-sign'></i> </span>";
-                    echo"<h5>Message</h5>";
-                    echo"</div>";
-                    echo"<div class='widget-content'>";
-                        echo"<div class='error_ex'>";
-                        echo"<h1>Success</h1>";
-                        echo"<h3>Your task has been added!</h3>";
-                        echo"<p>Please click the button to go back.</p>";
-                        echo"<a class='btn btn-inverse btn-big'  href='index.php'>Go Back</a> </div>";
-                    echo"</div>";
-                    echo"</div>";
-                echo"</div>";
-                echo"</div>";
-            echo"</div>";
-
-            }
-
-            }else{
-                echo"<h3>YOU ARE NOT AUTHORIZED TO REDIRECT THIS PAGE. GO BACK to <a href='index.php'> DASHBOARD </a></h3>";
-            }
-
-?>                
-       </form>   
+                echo"</li>";
+              ?>
     
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div><!--end of span 12 -->
 	  
 	  
 	  

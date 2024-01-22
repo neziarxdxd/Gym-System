@@ -15,7 +15,13 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 </head>
 <body>
-
+<style>
+  .end-button{
+    float: right;
+    padding-right: 10px;
+    padding-top: 10px;
+  }
+</style>
 <!--Header-part-->
 <div id="header">
   <h1><a href="index.php">Fitness Connection</a></h1>
@@ -57,7 +63,11 @@
        <div class="widget-box">
           <div class="widget-title"> <span class="icon"><i class="icon-time"></i></span>
             <h5>My To-Do List</h5>
+            <div class="end-button">
+            <a href="to-do.php"><i class="icon-plus-sign"></i></a>
+            </div>
           </div>
+         
           <div class="widget-content nopadding">
 
         <?php
@@ -95,7 +105,50 @@
        
       </div> <!-- End of ToDo List Bar -->
 	  
-	  <div class="span6">
+    
+      <div class="span6">
+        <div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-pencil"></i> </span>
+            <h5>To-Do Lists</h5>
+          </div>
+          <div class="widget-content nopadding">
+            <form id="form-wizard" class="form-horizontal" action="add-to-do.php" method="POST">
+              <div id="form-wizard-1" class="step">
+
+              <div class="control-group">
+                <label class="control-label">Please Enter Your Task :</label>
+                <div class="controls">
+                    <input type="text" required class="span11" name="task_desc" placeholder="I'll be doing 12 set up and . . ." />
+                </div>
+                </div>
+
+                 <div class="control-group">
+                    <label class="control-label">Please Select a Status:</label>
+                    <div class="controls">
+                        <select name="task_status" required="required" id="select">
+                        <option value="In Progress">In Progress</option>
+                        <option value="Pending">Pending</option>
+                        </select>
+                    </div>
+                </div>
+
+              <div class="form-actions">
+              <input type="hidden" name="userid" value="<?php echo $userid; ?>">
+                <input id="add" class="btn btn-primary" type="submit" value="Add To List" />
+                <div id="status"></div>
+              </div>
+              <div id="submitted"></div>
+            </form>
+          </div><!--end of widget-content -->
+        </div><!--end of widget box-->
+      </div> <!-- end of announcement -->
+	  
+    </div><!-- End of row-fluid -->
+
+    
+    <div class="row-fluid">
+      <div class="span6"></div>
+      <div class="span6">
         <div class="widget-box">
           <div class="widget-title bg_ly" data-toggle="collapse" href="#collapseG2"><span class="icon"><i class="icon-chevron-down"></i></span>
             <h5>Gym Announcement</h5>
@@ -129,6 +182,8 @@
       </div> <!-- end of announcement -->
 	  
     </div><!-- End of row-fluid -->
+
+
   </div><!-- End of container-fluid -->
 </div><!-- End of content-ID -->
 

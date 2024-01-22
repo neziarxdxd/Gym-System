@@ -818,6 +818,9 @@ div.dataTables_wrapper .ui-widget-header {
 .widget-box.collapsible .collapse.in .widget-content {
   border-bottom: 1px solid #cdcdcd;
 }
+.widget-box-right-end {
+  float: right;
+}
 .recent-posts,
 .recent-comments,
 .recent-users {
