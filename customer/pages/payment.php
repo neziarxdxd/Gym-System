@@ -64,9 +64,22 @@ header('location:../index.php');
               <?php
 
                 include "dbcon.php";
+                $basis_id = $_SESSION['user_id'];
                 $qry="select * from members where user_id='$_SESSION[user_id]'";
-                  $result=mysqli_query($con,$qry);
+                $result=mysqli_query($con,$qry);
+                $payment_history_query = "SELECT * FROM payment WHERE user_id = '$_SESSION[user_id]' order by paid_date desc";
+                $result_payment = mysqli_query($con, $payment_history_query);
+                if(mysqli_num_rows($result_payment) >=1 && $basis_id > 56){
+                  while($row = mysqli_fetch_array($result_payment)){
+                    echo"<div class='article-post'>";
+                    echo"<div class='user-info'> <b>Date:</b> ".$row['paid_date']." </div>";
+                    echo "<div class='user-info'> <b>Services:</b> ".$row['services']." </div>";
+                    echo"<div class='user-info'> <b>Amount:</b>  Php. ".$row['amount']." </div>";
+                    echo "<hr>";
+                  }
                   
+                }
+                else{
                 while($row=mysqli_fetch_array($result)){
                 // center icon
                  
@@ -75,6 +88,7 @@ header('location:../index.php');
                   echo "<div class='user-info'> <b>Services:</b> ".$row['services']." </div>";
                   echo"<div class='user-info'> <b>Amount:</b>  Php. ".$row['amount']." </div>";           
                 }
+              }
 
                 echo"</div>";
                 echo"</li>";

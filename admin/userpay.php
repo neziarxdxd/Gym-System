@@ -78,8 +78,10 @@ header('location:../index.php');
             //update query
             $qry = "UPDATE members SET amount='$amountpayable', plan='$plan', status='$status', paid_date='$curr_date', reminder='0' WHERE user_id='$id'";
             $result = mysqli_query($conn,$qry); //query executes
-
-            if(!$result){ ?>
+            $payment_query = "INSERT INTO `payment` (`user_id`, `paid_date`, `services`, `amount`) VALUES (".$id.",CURRENT_TIMESTAMP(),'".$services."',".$amountpayable.")";
+           $result_payment = mysqli_query($conn,$payment_query);
+           
+           if(!$result){ ?>
 
                 <h3 class="text-center">Something went wrong!</h3>
                 
