@@ -27,7 +27,9 @@
   <h1><a href="index.php">Fitness Connection</a></h1>
 </div>
 <!--close-Header-part--> 
-
+<?php
+include "dbcon.php";
+include "session.php";?>
 
 <!--top-Header-menu-->
 <?php include '../includes/topheader.php'?>
@@ -71,11 +73,14 @@
           <div class="widget-content nopadding">
 
         <?php
-            include "dbcon.php";
-            include "session.php";
+            
             $qry="SELECT * FROM todo WHERE user_id='".$_SESSION['user_id']."'";
             $result=mysqli_query($con,$qry);
-
+            $query_announcements = "SELECT * FROM announcements WHERE status='0'";
+            $result_announcements = mysqli_query($con, $query_announcements);
+            $get_number_announcements = mysqli_num_rows($result_announcements);
+            $announce_count = $get_number_announcements;
+           // echo "<div class='alert alert-info' role='alert'> ".$announce_count." Announcement(s) </div>";
             echo"<table class='table table-striped table-bordered'>
               <thead>
                 <tr>

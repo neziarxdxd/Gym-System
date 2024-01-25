@@ -84,6 +84,7 @@ header('location:../index.php');
                 <p>This is to notify you that your current membership program is going to expire soon. Please clear up your payments before your due dates. <br>IT IS IMPORTANT THAT YOU CLEAR YOUR DUES ON TIME IN ORDER TO AVOID SERVICE DISRUPTIONS.</p>
                 <hr>
                 <p class="mb-0">We value you as our customer and look forward to continue serving you in the future.</p>
+                
               </div>
 
               <?php } else { ?>

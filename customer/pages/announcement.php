@@ -59,19 +59,29 @@ header('location:../index.php');
           </div>
           <div class="widget-content nopadding collapse in" id="collapseG2">
             <ul class="recent-posts">
+              <!-- align to right -->
+              <li style="font-weight:bold; text-align:right" > <a href="actions/done-read.php?read=1"> Read All </a> </li>
               <li>
 
               <?php
 
                 include "dbcon.php";
-                $qry="select * from announcements";
+                $qry="select * from announcements order by id desc";
                   $result=mysqli_query($con,$qry);
                   
                 while($row=mysqli_fetch_array($result)){
                   echo"<div class='user-thumb'> <img width='50' height='50' alt='User' src='../img/demo/av2.jpg'> </div>";
                   echo"<div class='article-post'>"; 
-                  echo"<span class='user-info'> By: System Administrator / Date: ".$row['date']." </span>";
-                  echo"<p><a href='#'>".$row['message']."</a> </p>";
+                 
+                  if($row['status']==0){
+                    echo"<span class='user-info' style='font-weight:bold;'> By: System Administrator / Date: ".$row['date']." </span>";
+                    echo"<p style='font-weight:bold;'><a href='actions/done-read.php?id=".$row['id']."'>".$row['message']."</a> </p>";  
+                  }
+                  else{
+                    echo"<span class='user-info'> By: System Administrator / Date: ".$row['date']." </span>";
+                    echo"<p><a href='actions/done-read.php?id=".$row['id']."'>".$row['message']."</a> </p>";
+                  }
+                  
                  
                 }
 
