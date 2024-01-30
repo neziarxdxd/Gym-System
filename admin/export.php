@@ -14,7 +14,7 @@ if(isset($_POST["export"]))
                     <tr>  
                     <th>#</th>
                     <th>Fullname</th>
-                    <th>Username</th>
+                    <th>Email</th>
                     <th>Gender</th>
                     <th>Contact Number</th>
                     <th>D.O.R</th>

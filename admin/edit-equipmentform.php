@@ -128,9 +128,9 @@ header('location:../index.php');
         <div class="widget-content nopadding">
           <div class="form-horizontal">
             <div class="control-group">
-              <label for="normal" class="control-label">Contact Number</label>
+              <label for="normal" class="control-label">Email :</label>
               <div class="controls">
-                <input type="text" id="mask-phone" name="contact" minlength="10" maxlength="10" value='<?php echo $row['contact']; ?>' class="span8 mask text" required>
+                <input type="text" id="mask-phone" name="contact"  value='<?php echo $row['contact']; ?>' class="span8 mask text" required>
                 <span class="help-block blue span8">(999) 999-9999</span> 
                 </div>
             </div>

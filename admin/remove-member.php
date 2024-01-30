@@ -74,7 +74,7 @@ header('location:../index.php');
                 <tr>
                   <th>#</th>
                   <th>Fullname</th>
-                  <th>Username</th>
+                  <th>Email</th>
                   <th>Contact Number</th>
                   <th>D.O.R</th>
                   <th>Address</th>
@@ -91,11 +91,11 @@ header('location:../index.php');
                
                 <td><div class='text-center'>".$cnt."</div></td>
                 <td><div class='text-center'>".$row['fullname']."</div></td>
-                <td><div class='text-center'>@".$row['username']."</div></td>
+                <td><div class='text-center'>".$row['username']."</div></td>
                 <td><div class='text-center'>".$row['contact']."</div></td>
                 <td><div class='text-center'>".$row['dor']."</div></td>
                 <td><div class='text-center'>".$row['address']."</div></td>
-                <td><div class='text-center'>$".$row['amount']."</div></td>
+                <td><div class='text-center'>Php. ".$row['amount']."</div></td>
                 <td><div class='text-center'>".$row['services']."</div></td>
                 <td><div class='text-center'>".$row['plan']." Month/s</div></td>
                 <td><div class='text-center'><a onclick=\"return confirm('Please confirm deletion');\" href='actions/delete-member.php?id=".$row['user_id']."' style='color:#F66;'><i class='fas fa-trash'></i> Remove</a></div></td>

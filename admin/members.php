@@ -74,7 +74,7 @@ header('location:../index.php');
                 <tr>
                   <th>#</th>
                   <th>Fullname</th>
-                  <th>Username</th>
+                  <th>Email</th>
                   <th>Gender</th>
                   <th>Contact Number</th>
                   <th>D.O.R</th>
@@ -91,7 +91,7 @@ header('location:../index.php');
                
                 <td><div class='text-center'>".$cnt."</div></td>
                 <td><div class='text-center'>".$row['fullname']."</div></td>
-                <td><div class='text-center'>@".$row['username']."</div></td>
+                <td><div class='text-center'>".$row['username']."</div></td>
                 <td><div class='text-center'>".$row['gender']."</div></td>
                 <td><div class='text-center'>".$row['contact']."</div></td>
                 <td><div class='text-center'>".$row['dor']."</div></td>

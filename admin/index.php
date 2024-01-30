@@ -249,7 +249,7 @@ $result5=mysqli_query($con,$qry);
       <ul class="quick-actions">
         <li class="bg_ls span"> <a href="index.php" style="font-size: 16px;"> <i class="fas fa-user-check"></i><?php include'actions/dashboard-activecount.php'?></span> Active Members </a> </li>
         <li class="bg_lo span3"> <a href="members.php" style="font-size: 16px;"> <i class="fas fa-users"></i><?php include'dashboard-usercount.php'?></span> Registered Members</a> </li>
-        <li class="bg_lg span3"> <a href="payment.php" style="font-size: 16px;"> <i class="fa fa-dollar-sign"></i> Total Earnings: ₱<?php include'income-count.php' ?></a> </li>
+        <li class="bg_lg span3"> <a href="payment.php" style="font-size: 16px;"> <i class="fas fa-coins"></i> Total Earnings: ₱<?php include'income-count.php' ?></a> </li>
         <!-- <li class="bg_ls span2"> <a href="buttons.html"> <i class="fas fa-tint"></i> Buttons</a> </li>
         <li class="bg_ly span3"> <a href="form-common.html"> <i class="fas fa-th-list"></i> Forms</a> </li>
         <li class="bg_lb span2"> <a href="interface.html"> <i class="fas fa-pencil"></i>Elements</a> </li> -->

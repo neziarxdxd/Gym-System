@@ -24,7 +24,7 @@ include('dbcon.php'); ?>
                 <div class="control-group">
                     <div class="controls">
                         <div class="main_input_box">
-                            <span class="add-on bg_lg"><i class="icon-user"> </i></span><input type="text" name="user" placeholder="Username" />
+                            <span class="add-on bg_lg"><i class="icon-user"> </i></span><input type="text" name="user" placeholder="Email" />
                         </div>
                     </div>
                 </div>
@@ -63,7 +63,7 @@ include('dbcon.php'); ?>
                         else
                             {
                                 echo "<div class='alert alert-danger alert-dismissible' role='alert'>
-                                Invalid Username/Password or Account has been Expired!
+                                Invalid Email/Password or Account has been Expired!
                                 <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
                                     <span aria-hidden='true'>&times;</span>
                                 </button>

@@ -66,9 +66,9 @@ header('location:../index.php');
               </div>
             </div>
             <div class="control-group">
-              <label class="control-label">Username :</label>
+              <label class="control-label">Email :</label>
               <div class="controls">
-                <input type="text" class="span11" name="username" placeholder="Username" required/>
+                <input type="text" class="span11" name="username" placeholder="Email" required/>
               </div>
             </div>
             <div class="control-group">

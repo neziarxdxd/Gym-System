@@ -62,7 +62,7 @@ header('location:../index.php');
             
 
                 <div class="control-group">
-                  <label class="control-label">Enter a Username</label>
+                  <label class="control-label">Enter a Email</label>
                   <div class="controls">
                     <input id="username" type="text" name="username" />
                   </div>
