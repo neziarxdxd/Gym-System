@@ -48,6 +48,8 @@ try {
     // echo 'Message has been sent';
 
     // redirect to success page
+    // add session message 
+    $_SESSION['forget-pass-msg'] = 'FORGET-PASS';
     header('Location:../../index.php');
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
