@@ -1,5 +1,10 @@
 <?php session_start();
-include('dbcon.php'); ?>
+include('dbcon.php');
+//the isset function to check username is already loged in and stored on the session
+if(!isset($_SESSION['forget-pass-msg'])){
+header('location:index.php');	
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
     <!-- Visit codeastro.com for more projects -->
@@ -17,27 +22,28 @@ include('dbcon.php'); ?>
     </head>
     
     <body>
-    
+
+    <?php if(isset($_SESSION['forget-pass-msg'])){} ?>
     <div id="loginbox">            
-            <form id="loginform" class="form-vertical" method="POST" action="pages/actions/email.php">
-				 <div class="control-group normal_text"> <h3>Forgot Password</h3></div>
+            <form id="loginform" class="form-vertical" method="POST" action="pages/actions/verify.php">
+				 <div class="control-group normal_text"> <h3>Enter OTP</h3></div>
                 <div class="control-group">
                     <div class="controls">
                         <div class="main_input_box">
-                            <span class="add-on bg_lg"><i class="icon-user"> </i></span><input type="email" name="email" placeholder="Email" />
+                            <span class="add-on bg_lg"><i class="icon-user"> </i></span><input type="number" name="otp-code" min="1000" max="999999" placeholder="Enter OTP Code" />
                         </div>
                     </div>
-                </div>
-                <div class="control-group">
-                    <div class="controls">
-                        <!-- <div class="main_input_box">
-                            <span class="add-on bg_ly"><i class="icon-lock"></i></span><input type="password" name="pass" placeholder="Password" />
-                        </div> -->
+                    <!-- center for count down -->
+                    <div class="controls"  style="text-align: center; padding-top: 10px">
+                       
+                        <span style="color: white; text-align: center; padding: 10px;" id="time">You have 5 minutes to verify</span>
+
                     </div>
                 </div>
+                
                 <div class="form-actions">
                     <span class="pull-left"><a href="../index.html" class="flip-link btn btn-info" id="to-recover">Back</a></span>
-                    <span class="pull-right"><button type="submit" name="email" class="btn btn-success" />Forgot Password</button></span>
+                    <span class="pull-right"><button type="submit" name="verify" class="btn btn-success" />Verifiy</button></span>
                 </div>
                 <div class="g">
                 <a href="../index.html"><h6>Go Back</h6></a>
@@ -83,7 +89,7 @@ include('dbcon.php'); ?>
            
         </div>           
             
-            
+
         
         <script src="js/jquery.min.js"></script>  
         <script src="js/matrix.login.js"></script> 

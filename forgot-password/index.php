@@ -24,7 +24,7 @@ include('dbcon.php'); ?>
                 <div class="control-group">
                     <div class="controls">
                         <div class="main_input_box">
-                            <span class="add-on bg_lg"><i class="icon-user"> </i></span><input type="email" name="email" placeholder="Email" />
+                            <span class="add-on bg_lg"><i class="icon-user"> </i></span><input type="email" name="email-code" placeholder="Email" />
                         </div>
                     </div>
                 </div>
@@ -42,6 +42,8 @@ include('dbcon.php'); ?>
                 <div class="g">
                 <a href="../index.html"><h6>Go Back</h6></a>
                 </div>
+               
+
                 
                 <?php
 // Assuming $con is your database connection object
@@ -88,6 +90,8 @@ include('dbcon.php'); ?>
         <script src="js/jquery.min.js"></script>  
         <script src="js/matrix.login.js"></script> 
         <script src="js/bootstrap.min.js"></script> 
+        <script>
+        
 <script src="js/matrix.js"></script>
     </body>
 
