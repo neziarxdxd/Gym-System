@@ -34,11 +34,16 @@ include('dbcon.php'); ?>
                             <span class="add-on bg_ly"><i class="icon-lock"></i></span><input type="password" name="pass" placeholder="Password" />
                         </div>
                     </div>
+                    <div>
+                    <span class="pull-right"  style="padding-top: 10px; padding-right: 50px"><a href="../../Gym-System/forgot-password/index.php">Forgot password</a></span>
                 </div>
+                </div>
+                
                 <div class="form-actions">
                     <span class="pull-left"><a href="#" class="flip-link btn btn-info" id="to-recover">Join Now!</a></span>
                     <span class="pull-right"><button type="submit" name="login" class="btn btn-success" />Customer Login</button></span>
                 </div>
+             
                 <div class="g">
                 <a href="../index.html"><h6>Go Back</h6></a>
                 </div>
