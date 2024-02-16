@@ -452,6 +452,15 @@ $result5=mysqli_query($con,$qry);
 <script src="../js/matrix.popover.js"></script> 
 <script src="../js/jquery.dataTables.min.js"></script> 
 <script src="../js/matrix.tables.js"></script> 
+<script type="text/JavaScript">
+    var idleRefresh;
+    var time = 1000 * 60 * 1;
+    idleRefresh = setTimeout("location.href = '../logout.php';",time);
+    windows.onmousemove = function() {
+        clearTimeOut(idleRefresh);
+        idleRefresh = setTimeout("location.href = '../logout.php';",time);
+    };
+</script>
 
 <script type="text/javascript">
   // This function is called from the pop-up menus to transfer to

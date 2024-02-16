@@ -91,7 +91,7 @@ include('dbcon.php'); ?>
 
                         <div class="controls">
                             <div class="main_input_box">
-                                <span class="add-on bg_lo"><i class="icon-leaf"></i></span><input type="text" pattern="^.{4,15}$" name="username" placeholder="@username" required />
+                                <span class="add-on bg_lo"><i class="icon-leaf"></i></span><input type="email" name="username" placeholder="email" required />
                             </div>
                         </div>
 
