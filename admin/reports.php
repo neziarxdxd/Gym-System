@@ -202,8 +202,10 @@ $result=mysqli_query($con,$qry);
     <h1 class="text-center">Earning and Expenses Report <i class="fas fa-chart-bar"></i></h1>
   </div>
   <div class="container-fluid">
+    <!-- TODAY!!! -->
   <input type="button" id="today-report" name="today-report" value="Today Report">
-
+    <!-- WEEKLY -->
+  <input type="button" id="weekly-report" name="weekly-report" value="Weekly Report">
   <label for="start_date">Start Date:</label>
 <input type="text" id="start_date" name="start_date">
 
@@ -415,6 +417,183 @@ $result=mysqli_query($con,$qry);
      
 
     </script>
+
+    <!-- WEEKLY REPORT -->
+    <script>
+      /** this script for data table for querying TODAY!!! */
+      // get button 
+      var btn = document.getElementById('weekly-report');
+      btn.addEventListener('click', function() {
+          google.charts.load('current', {'packages':['bar']});
+          google.charts.setOnLoadCallback(drawStuffTODAY);
+          google.charts.load('current', {'packages':['corechart']});  
+          google.charts.setOnLoadCallback(drawChart);
+          // google.charts.load('current', {'packages':['bar']});
+          // google.charts.setOnLoadCallback(drawStuffCHARTTODAY);
+          google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawStuff);
+      })
+     
+
+      function drawStuffTODAY() {
+        console.log("TODAYT!!!");
+        var placeHolder = new google.visualization.arrayToDataTable([
+            ['Services', 'Total Numbers'],
+            ['Others',0],
+            ['Cardio',0],
+            ['Fitness',0],
+            ['Sauna',0],  
+        ]);
+        var data = new google.visualization.arrayToDataTable([
+          ['Services', 'Total Numbers'],
+          // ["King's pawn (e4)", 44],
+          // ["Queen's pawn (d4)", 31],
+          // ["Knight to King 3 (Nf3)", 12],
+          // ["Queen's bishop pawn (c4)", 10],
+          // ['Other', 3]
+
+          <?php
+            $query="SELECT services, count(*) as number FROM payment WHERE YEARWEEK(paid_date) = YEARWEEK(CURDATE())  GROUP BY services";
+            $res=mysqli_query($con,$query);
+            while($data=mysqli_fetch_array($res)){
+              $services=$data['services'];
+              $number=$data['number'];
+           ?>
+           ['<?php echo $services;?>',<?php echo $number;?>],   
+           <?php   
+            }
+           ?> 
+
+          
+        ]);
+
+        var options = {
+          // title: 'Chess opening moves',
+          width: 1050,
+          legend: { position: 'none' },
+          // chart: { title: 'Chess opening moves',
+          //          subtitle: 'popularity by percentage' },
+          bars: 'horizontal', // Required for Material Bar Charts.
+          axes: {
+            x: {
+              0: { side: 'top', label: 'Total'} // Top x-axis.
+            }
+          },
+          bar: { groupWidth: "100%" }
+        };
+        // if data is empty then ternary
+        console.log(data.getNumberOfRows());
+        displayData  = data.getNumberOfRows() > 0 ? data : placeHolder;
+        var chart = new google.charts.Bar(document.getElementById('top_x_div'));
+        chart.draw(displayData, options);
+      };
+      
+      
+  
+      function drawChart()  
+      {  
+        // TODAY PIE !!!
+      <?php
+       $qryTODAYGender="SELECT gender, count(*) as number FROM members WHERE YEARWEEK(paid_date) = YEARWEEK(CURDATE())  GROUP BY gender ";
+       $resultGender=mysqli_query($con,$qryTODAYGender);
+      ?>
+          var data = google.visualization.arrayToDataTable([  
+                    ['Gender', 'Number'],  
+                    <?php  
+                    while($row = mysqli_fetch_array($resultGender))  
+                    {  
+                          echo "['".$row["gender"]."', ".$row["number"]."],";  
+                    }  
+                    ?>  
+                ]);  
+          var options = {  
+                title: 'Percentage of Male and Female GYM Members',  
+                //is3D:true,  
+                pieHole: 0.0 
+                };  
+          var chart = new google.visualization.PieChart(document.getElementById('piechart'));  
+          chart.draw(data, options);  
+      } 
+      // CHART TODAY!!! 
+      
+
+     
+      ////////////// ==========================================
+      function drawStuff() {
+        var data = new google.visualization.arrayToDataTable([
+          ['Terms', 'Total Amount',],
+          
+          <?php
+          $query1 = "SELECT SUM(amount) as numberone FROM payment WHERE YEARWEEK(paid_date) = YEARWEEK(CURDATE());";
+
+            $rezz=mysqli_query($con,$query1);
+            while($data=mysqli_fetch_array($rezz)){
+              $services='Earnings';
+              $numberone=empty($data['numberone']) ? 0 : $data['numberone'];
+              // $numbertwo=$data['numbertwo'];
+           ?>
+           ['<?php echo $services;?>',<?php echo $numberone;?>,],   
+           <?php   
+            }
+           ?> 
+
+      <?php
+          $query10 = "SELECT quantity, SUM(amount) as numbert FROM equipment WHERE YEARWEEK(date) = YEARWEEK(CURDATE());";
+            $res1000=mysqli_query($con,$query10);
+            while($data=mysqli_fetch_array($res1000)){
+              $expenses='Expenses';
+              $numbert=empty($data['numbert']) ? 0 : $data['numbert'];
+              
+           ?>
+           ['<?php echo $expenses;?>',<?php echo $numbert;?>,],   
+           <?php   
+            }
+           ?> 
+
+          
+        ]);
+
+        var options = {
+         
+          width: "1050",
+          legend: { position: 'none' },
+          
+          bars: 'horizontal', // Required for Material Bar Charts.
+          axes: {
+            x: {
+              0: { side: 'top', label: 'Total'} // Top x-axis.
+            }
+          },
+          bar: { groupWidth: "100%" }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('top_y_div'));
+        chart.draw(data, options);
+      }; 
+      ////// ==========================================================================================
+     
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script src="../js/excanvas.min.js"></script> 
 <script src="../js/jquery.min.js"></script> 
 <script src="../js/jquery.ui.custom.js"></script> 
