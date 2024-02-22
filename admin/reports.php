@@ -7,7 +7,18 @@ header('location:../index.php');
 }
 
 include "dbcon.php";
-$qry="SELECT gender, count(*) as number FROM members GROUP BY gender";
+if(isset($_POST['start_date']) && isset($_POST['end_date'])){
+  $start_date = $_POST['start_date'];
+  $end_date = $_POST['end_date'];
+  $qry="SELECT gender, count(*) as number FROM members WHERE paid_date BETWEEN '$start_date' AND '$end_date' GROUP BY gender;";
+  
+}
+else{
+  $qry="SELECT gender, count(*) as number FROM members GROUP BY gender";
+
+}
+
+
 $result=mysqli_query($con,$qry);
 ?>
 <!-- Visit codeastro.com for more projects -->
@@ -28,6 +39,9 @@ $result=mysqli_query($con,$qry);
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>  
            <script type="text/javascript">  
+           if ( window.history.replaceState ) {
+  window.history.replaceState( null, null, window.location.href );
+}
            google.charts.load('current', {'packages':['corechart']});  
            google.charts.setOnLoadCallback(drawChart);  
            function drawChart()  
@@ -60,7 +74,14 @@ $result=mysqli_query($con,$qry);
           ['Terms', 'Total Amount',],
           
           <?php
-          $query1 = "SELECT gender, SUM(amount) as numberone FROM members; ";
+          if(isset($_POST['start_date']) && isset($_POST['end_date'])){
+            $start_date = $_POST['start_date'];
+            $end_date = $_POST['end_date'];
+            $query1 = "SELECT SUM(amount) as numberone FROM payment WHERE paid_date BETWEEN '$start_date' AND '$end_date'";
+          }
+          else{
+            $query1 = "SELECT SUM(amount) as numberone FROM payment; ";
+          }
 
             $rezz=mysqli_query($con,$query1);
             while($data=mysqli_fetch_array($rezz)){
@@ -74,7 +95,16 @@ $result=mysqli_query($con,$qry);
            ?> 
 
       <?php
-          $query10 = "SELECT quantity, SUM(amount) as numbert FROM equipment";
+           if(isset($_POST['start_date']) && isset($_POST['end_date'])){
+            $start_date = $_POST['start_date'];
+            $end_date = $_POST['end_date'];
+            $query10 = "SELECT quantity, SUM(amount) as numbert FROM equipment WHERE date BETWEEN '$start_date' AND '$end_date'";
+
+           }
+           else{
+            $query10 = "SELECT quantity, SUM(amount) as numbert FROM equipment";
+
+           }
             $res1000=mysqli_query($con,$query10);
             while($data=mysqli_fetch_array($res1000)){
               $expenses='Expenses';
@@ -133,7 +163,14 @@ $result=mysqli_query($con,$qry);
           // ['Other', 3]
 
           <?php
-            $query="SELECT services, count(*) as number FROM payment GROUP BY services";
+            if(isset($_POST['start_date']) && isset($_POST['end_date'])){
+              $start_date = $_POST['start_date'];
+              $end_date = $_POST['end_date'];
+              $query="SELECT services, count(*) as number FROM payment WHERE paid_date BETWEEN '$start_date' AND '$end_date' GROUP BY services";
+            }
+            else{
+              $query="SELECT services, count(*) as number FROM payment GROUP BY services";
+            }
             $res=mysqli_query($con,$query);
             while($data=mysqli_fetch_array($res)){
               $services=$data['services'];
@@ -206,11 +243,14 @@ $result=mysqli_query($con,$qry);
   <input type="button" id="today-report" name="today-report" value="Today Report">
     <!-- WEEKLY -->
   <input type="button" id="weekly-report" name="weekly-report" value="Weekly Report">
-  <label for="start_date">Start Date:</label>
-<input type="text" id="start_date" name="start_date">
+<form method="POST" action="reports.php" name ="custom-report-btn">
+<label for="start_date">Start Date:</label>
+<input type="date" id="start_date" name="start_date" required>
 
 <label for="end_date">End Date:</label>
-<input type="date" id="end_date" name="end_date">
+<input type="date" id="end_date" name="end_date" required>
+<input type="submit" id="custom-report" name="custom-report-btn" value="Custom Date Report">    
+</form>
     <div class="row-fluid">
       <div class="span12">
         <div id="top_y_div" style="width: 700px; height: 300px;"></div>
@@ -337,7 +377,7 @@ $result=mysqli_query($con,$qry);
       {  
         // TODAY PIE !!!
       <?php
-       $qryTODAYGender="SELECT gender, count(*) as number FROM members WHERE DATE(paid_date) = CURDATE()  GROUP BY gender ";
+       $qryTODAYGender="SELECT gender, count(*) as number FROM members WHERE DATE(paid_date) = CURDATE()  GROUP BY gender;";
        $resultGender=mysqli_query($con,$qryTODAYGender);
       ?>
           var data = google.visualization.arrayToDataTable([  
@@ -575,11 +615,7 @@ $result=mysqli_query($con,$qry);
 
     </script>
 
-
-
-
-
-
+    
 
 
 
