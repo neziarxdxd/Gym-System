@@ -454,7 +454,8 @@ $result5=mysqli_query($con,$qry);
 <script src="../js/matrix.tables.js"></script> 
 <script type="text/JavaScript">
     var idleRefresh;
-    var time = 1000 * 60 * 1;
+    /// Timeout
+    var time = 1000 * 60 * 1 * 10;
     idleRefresh = setTimeout("location.href = '../logout.php';",time);
     windows.onmousemove = function() {
         clearTimeOut(idleRefresh);
